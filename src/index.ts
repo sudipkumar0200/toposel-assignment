@@ -11,13 +11,13 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 app.use(cookieParser())
-// app.use(
-//   cors({
-//     origin: "*",
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//   })
-// );
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 dbConnect();
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", usersRoute);
