@@ -1,12 +1,11 @@
-# Jarurat-Care API
+# Toposel API
 
-A RESTful API server for managing Cancer Patents data with user authentication, built with Node.js, Express, Typescript.
+A REST API for managing User data with user authentication, built with Node.js, Express, Typescript.
 
 ## Features
 
-- User authentication with JWT
-- Patents data management
-- RESTful API architecture
+- User authentication with JWT, Cookie
+- User data management
 - MongoDB database
 
 ## Tech Stack
@@ -16,7 +15,7 @@ A RESTful API server for managing Cancer Patents data with user authentication, 
 - Typescript
 - MongoDB
 - Bcrypt
-- JWT for authentication
+- JWT and Cookie for authentication
 
 ## API Endpoints
 
@@ -29,12 +28,8 @@ The server exposes the following API endpoints:
 
 ### Users
 
-- `/api/v1/users/user/showData` - user data by id
-- `/api/vi/users/user/admin/createData` - admin can create Data
-- `/api/v1/users/user/admin/readAllData` - admin can read all patents details
-- `/api/v1/users/user/admin/readDataById` - admin can read particular patent's data
-- `/api/v1/users/user/admin/updateDataById` - admin can update particular patent's data
-- /api/v1/users/user/admin/deleteDataById - admin can update particular patent's data
+- `/api/v1/users/showData` - user data by id
+- `/api/vi/users/showAll` - fetch all User data
 
 ## Environment Variables
 
@@ -51,8 +46,8 @@ JWT_SECRET="your-jwt-secret"
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/sudipkumar0200/jaruratCare-server
-cd jaruratCare-server
+https://github.com/sudipkumar0200/toposel-assignment
+cd toposel-assignment
 ```
 
 2. Install dependencies:
@@ -66,8 +61,6 @@ npm install
 ```bash
 npm run start
 ```
-
-
 
 ## License
 

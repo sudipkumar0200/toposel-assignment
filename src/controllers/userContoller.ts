@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { CustomRequest } from "../config/types";
-import { patient } from "../models/patientModel";
+import { user } from "../models/userModel";
 
 export const showData = async (
   req: CustomRequest,
@@ -8,14 +8,26 @@ export const showData = async (
 ): Promise<void> => {
   const userId = req.user?.userId;
   try {
-    const data = await patient.findOne({
-      user: userId,
+    const data = await user.findOne({
+      _id: userId,
     });
-    if (!data) {
-      res.status(402).json({ message: "Sorry, we can't find your data " });
-    }
-    res.status(200).send({ message: "Welcome to Jarurat Care ", data });
+    
+    res.status(200).send({ message: "Your data found : ", data });
   } catch (error) {
-    res.status(500).send({ message: "error from  user getDataById function" });
+    res.status(500).send({ message: "No user Data found!!!!" });
+    return;
+  }
+};
+
+export const showAllUsers = async (
+  req: CustomRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const data = await user.find(); 
+    res.status(200).send({ message: "Users data found : ", data });
+  } catch (error) {
+    res.status(500).send({ message: "There is no User Data!!" });
+    return;
   }
 };

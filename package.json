@@ -1,5 +1,5 @@
 {
-  "name": "ngoapiassignment",
+  "name": "toposel",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
@@ -16,6 +16,7 @@
     "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.7",
     "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "jsonwebtoken": "^9.0.2",
@@ -23,6 +24,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.7",

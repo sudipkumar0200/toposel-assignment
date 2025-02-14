@@ -26,10 +26,15 @@ export const authSignUp = async (
         .json({ message: "An account with this email already exists" });
       return;
     }
-    const hashedPasswd = await bcrypt.hash(parsedBody.data.passwd, 10);
+    const hashedPasswd = await bcrypt.hash(parsedBody.data.password, 10);
     await user.create({
+      userName:parsedBody.data.userName,
+      fullName:parsedBody.data.fullName,
       email: parsedBody.data.email,
-      passwd: hashedPasswd,
+      password: hashedPasswd,
+      gender:parsedBody.data.gender,
+      DOB:parsedBody.data.DOB,
+      country:parsedBody.data.country
     });
 
     res.status(201).json({
@@ -57,8 +62,8 @@ export const authSignIn = async (req: Request, res: Response) => {
       return;
     }
     const comparePasswd = bcrypt.compare(
-      parsedBody.data.passwd,
-      userExist.passwd
+      parsedBody.data.password,
+      userExist.password
     );
 
     if (!comparePasswd) {
@@ -72,17 +77,18 @@ export const authSignIn = async (req: Request, res: Response) => {
       res.status(401).json("Invalid jwt-secret for has NULL value");
       return;
     }
-    const createToken = sign(
+    const authToken = sign(
       {
         userId: userExist._id,
-        role: userExist.role,
+        userName: userExist.userName,
       },
       process.env.SECRET_TOKEN,
       {
         expiresIn: "1h",
       }
     );
-    res.status(200).send({ message: "Login successful", createToken });
+    res.cookie("token", authToken)
+    res.status(200).send({ message: "Login successful"});
   } catch (error) {
     res.send(500);
     console.log("Error while signIn account!!", error);

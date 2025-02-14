@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+console.log("The Database url is ", process.env.MONGODB_URI)
 
 const dbConnect = async ()=>{
     if (!process.env.MONGODB_URI) {
