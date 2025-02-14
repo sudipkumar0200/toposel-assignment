@@ -28,7 +28,7 @@ The server exposes the following API endpoints:
 
 ### Users
 
-- `/api/v1/users/showData` - user data by id
+- `/api/v1/users/myData` - user data by id
 - `/api/vi/users/showAll` - fetch all User data
 
 ## Environment Variables
