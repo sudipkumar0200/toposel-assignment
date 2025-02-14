@@ -8,22 +8,7 @@ export const validateToken =  (
   req: CustomRequest,
   res: Response,
   next: NextFunction
-) => {
-  // const authHeader = req.headers.authorization || req.headers.Authorization;
-  // if (!authHeader || typeof authHeader !== "string") {
-  //    res.status(401).json({
-  //     message: "Authorization header missing",
-  //   });
-  //   return;
-  // }
-  // if (!authHeader.startsWith("Bearer ")) {
-  //    res.status(401).json({
-  //     success: false,
-  //     message: "Invalid token format. Use Bearer scheme",
-  //   });
-  //   return;
-  // }
-
+) => { 
   if (!process.env.SECRET_TOKEN) {
      res.status(401).json({
       message: "Invalid secret token",
@@ -31,7 +16,6 @@ export const validateToken =  (
     return
   }
   
-  // const token = authHeader.split(" ")[1];
    const token = req.cookies.token;
    console.log("requested token is ", token)
   try {
